@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Coronavirus Tchad Light</ion-title>
+    <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card >
+        <ion-card-header>
+            <ion-card-title color="warning" class="ion-text-center" >
+  <div text-center *ngIf="count"> {{ count }} articles trouvés</div>
+</ion-card-title>
+</ion-card-header>
+</ion-card>
+  <ion-card *ngFor="let post of posts">
+    <ion-card-header>
+      <ion-card-title [innerHTML]="post.title.rendered" class="ion-text-center"></ion-card-title>
+      <ion-card-subtitle>{{ post.date_gmt | date }} || {{ post._embedded.author[0].name }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+        <div> 
+      <img [src]='post._embedded["wp:featuredmedia"][0].source_url' > 
+    </div>
+      <div [innerHTML]="post.excerpt.rendered" class="ion-text-justify"></div>
+      <ion-button expand="full" fill="clear" [routerLink]="['/', 'posts', post.id]" text-right>Lire la suite...</ion-button>
+    </ion-card-content>
+  </ion-card>
+ 
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Charger plus d'articles...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

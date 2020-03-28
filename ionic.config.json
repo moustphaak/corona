@@ -1,5 +1,7 @@
 {
   "name": "coroTDSimple",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

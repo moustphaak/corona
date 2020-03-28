@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Coronavirus Tchad Light </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/posts" text="Retour"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content padding>
+  
+      <div *ngIf="post">
+          <ion-card >
+              <ion-card-header>
+                  <img [src]='post._embedded["wp:featuredmedia"][0].source_url' [style.width]="'100%'">
+                  <ion-card-title [innerHTML]="post.title.rendered" class="ion-text-center"></ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                 <div [innerHTML]="post.content.rendered" padding></div>
+              </ion-card-content>
+      </ion-card>
+      </div>
+     
+    </ion-content>
+     
+    <ion-footer color="secondary">
+      <ion-toolbar>
+        <ion-button expand="full" fill="clear" (click)="openOriginal()">
+          Ouvrir l'article original
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>

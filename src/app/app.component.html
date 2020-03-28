@@ -1,3 +1,34 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-menu side="start" menuId="first" contentId="content1">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Naviguer</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list *ngFor="let pages of navigate">
+          <ion-menu-toggle auto-hide="true">
+            <ion-item [routerLink]="pages.url" routerDirection="forward">
+                <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+                   {{pages.title}} 
+            </ion-item>
+          </ion-menu-toggle>
+          </ion-list>
+          <ion-card>
+              <ion-card-header>
+                 <ion-card-title class="ion-text-center" color="secondary">Objectif de l'application</ion-card-title>
+             </ion-card-header>
+             <ion-card-content class="ion-text-justify">
+          
+          Cette application contient uniquement l'essentiel de l'actualité portant sur le Coronavirus au Tchad. 
+          Pour plus d'information, veuillez visiter notre site  web 
+           <a href="http://www.coronavirus-tchad.com">www.coronavirus-tchad.com</a> ou notre page Facebook 
+           <a href="http://www.facebook.com/SanteTD">Prévention Coronavirus Tchad</a>.
+            
+           Pour nous écrire, veuillez utiliser l'onglet Contactez-nous.
+        </ion-card-content>
+      </ion-card>
+        </ion-content>
+      </ion-menu>
+  <ion-router-outlet id="content1"></ion-router-outlet>
 </ion-app>
